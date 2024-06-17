@@ -1,7 +1,7 @@
 class EvenNumbers:
     def __init__(self, start, end):
-        self.start = 0
-        self.end = 1
+        self.start = start
+        self.end = end
         self.i = 0
 
     def __iter__(self):
@@ -11,9 +11,7 @@ class EvenNumbers:
     def __next__(self):
         self.i += 1
         if self.start < self.end:
-            for num in range(self.start, self.end):
-                if num % 2 == 0:
-                    return num
+            print('\n'.join(map(str, range((self.start + self.start % 2), (self.end + 1), 2))))
         raise StopIteration()
 
 
