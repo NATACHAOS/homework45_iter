@@ -1,20 +1,26 @@
 class EvenNumbers:
-    def __init__(self, start, end):
+    """Перебор чётных чисел в определённом числовом диапазоне"""
+    def __init__(self, start=0, end=1):
         self.start = start
         self.end = end
-        self.i = 0
 
     def __iter__(self):
-        self.i = 0
+        self.start = self.start
+        self.result = self.start
         return self
 
     def __next__(self):
-        self.i += 1
-        if self.start < self.end:
-            print('\n'.join(map(str, range((self.start + self.start % 2), (self.end + 1), 2))))
-        raise StopIteration()
+        if self.start > self.end:
+            raise StopIteration()
+        elif self.start % 2 == 0:
+            self.result = self.start
+            self.start += 1
+            return self.result
+        else:
+            self.start += 1
 
 
 en = EvenNumbers(10, 25)
 for i in en:
-    print(i)
+    if i != None:
+        print(i)
